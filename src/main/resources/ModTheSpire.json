@@ -1,8 +1,8 @@
 {
-  "modid": "EliteBeforeFire",
-  "name": "boss前火堆变精英",
+  "modid": "qidongliucheng",
+  "name": "怪物慢启动 monster startagain",
   "author_list": ["Dieyou"],
-  "description": "作者@b站蝴蝶是幼虫，将boss前的火堆替换为精英",
+  "description": "作者@b站蝴蝶是幼虫，怪物前三回合都会尝试使用第一回合的意图",
   "version": "0.1.4",
   "sts_version": "12-22-2020",
   "mts_version": "3.23.2",

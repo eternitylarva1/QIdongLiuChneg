@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- 改成你需要的名称 -->
-    <groupId>EliteBeforeFire</groupId>
+    <groupId>Qidongliucheng</groupId>
     <!-- 改成你需要的名称 -->
-    <artifactId>EliteBeforeFire</artifactId>
+    <artifactId>Qidongliucheng</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <!-- 改成你需要的名称 -->
-    <name>EliteBeforeFire</name>
+    <name>Qidongliucheng</name>
     <!-- 改不改由你 -->
     <description>a sts mod.</description>
 

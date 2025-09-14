@@ -1,40 +1,37 @@
-package EliteBeforeFire.modcore;
+package Qidongliucheng.modcore;
 
 
+import Qidongliucheng.relics.jibaobingdu;
 import basemod.*;
+import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.utils.compression.lzma.Base;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.Keyword;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.map.RoomTypeAssigner;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.RestRoom;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 
 import static com.megacrit.cardcrawl.core.Settings.language;
-import static com.megacrit.cardcrawl.core.Settings.seed;
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.map;
 
 
 @SpireInitializer
-public class eliteBeforeFire implements StartActSubscriber,PostDungeonInitializeSubscriber,PostInitializeSubscriber,EditKeywordsSubscriber,OnStartBattleSubscriber, PostBattleSubscriber , EditStringsSubscriber, EditRelicsSubscriber,OnPlayerTurnStartSubscriber { // 实现接口
-    public eliteBeforeFire() {
+public class qidongliucheng implements StartActSubscriber,PostDungeonInitializeSubscriber,PostInitializeSubscriber,EditKeywordsSubscriber,OnStartBattleSubscriber, PostBattleSubscriber , EditStringsSubscriber, EditRelicsSubscriber,OnPlayerTurnStartSubscriber { // 实现接口
+    public qidongliucheng() {
         BaseMod.subscribe(this); // 告诉basemod你要订阅事件
     }
     public static int turn=0;
-    public static final String MyModID = "eliteBeforeFire";
+    public static final String MyModID = "qidongliucheng";
     ModPanel settingsPanel = new ModPanel();
     public static SpireConfig config;
     public static boolean hasselected=false;
@@ -43,7 +40,7 @@ public class eliteBeforeFire implements StartActSubscriber,PostDungeonInitialize
 
     public static void initialize() throws IOException {
 
-        new eliteBeforeFire();
+        new qidongliucheng();
 
 
     }
@@ -57,7 +54,7 @@ public class eliteBeforeFire implements StartActSubscriber,PostDungeonInitialize
 
     @Override
     public void receiveEditRelics() {
-        
+        BaseMod.addRelic(new jibaobingdu(), RelicType.SHARED);
     }
 
     @Override
@@ -68,8 +65,8 @@ public class eliteBeforeFire implements StartActSubscriber,PostDungeonInitialize
         } else {
             lang = "ENG"; // 如果没有相应语言的版本，默认加载英语
         }
-    BaseMod.loadCustomStringsFile(RelicStrings.class, "eliteBeforeFireResources/localization/" + lang + "/relics.json");
-        BaseMod.loadCustomStringsFile(UIStrings.class, "eliteBeforeFireResources/localization/" + lang + "/ui.json");
+    BaseMod.loadCustomStringsFile(RelicStrings.class, "qidongliuchengResources/localization/" + lang + "/relics.json");
+        BaseMod.loadCustomStringsFile(UIStrings.class, "qidongliuchengResources/localization/" + lang + "/ui.json");
 
     }
     public static float getYPos(float y) {
@@ -90,17 +87,7 @@ public class eliteBeforeFire implements StartActSubscriber,PostDungeonInitialize
 
     }
    public static void initializeHashmap(){
-        if (AbstractDungeon.player==null|| !CardCrawlGame.isInARun()){
-            return;
-        }
-       com.megacrit.cardcrawl.random.Random rng=new com.megacrit.cardcrawl.random.Random(seed);
 
-        for(int i=0;i<1000;i++){
-            boolean istrue;
-            istrue=rng.randomBoolean(0.7f);
-firemap.put(i,istrue);
-
-        }
    }
     @Override
     public void receiveEditKeywords() {
@@ -110,7 +97,7 @@ firemap.put(i,istrue);
             lang = "ZHS";
         }
 
-        String json = Gdx.files.internal("eliteBeforeFireResources/localization/" + lang + "/keywords.json")
+        String json = Gdx.files.internal("qidongliuchengResources/localization/" + lang + "/keywords.json")
                 .readString(String.valueOf(StandardCharsets.UTF_8));
         Keyword[] keywords = gson.fromJson(json, Keyword[].class);
 
@@ -130,6 +117,7 @@ firemap.put(i,istrue);
 
     @Override
     public void receivePostDungeonInitialize() {
-        initializeHashmap();
+      jibaobingdu jibaobingdu1=new jibaobingdu();
+      jibaobingdu1.instantObtain();
     }
 }

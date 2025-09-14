@@ -1,0 +1,9 @@
+{
+  "qidongliucheng:jibaobingdu": {
+    "NAME": "鸡煲病毒?",
+    "FLAVOR": "一个邪恶的病毒，被感染的怪物启动会变慢",
+    "DESCRIPTIONS": [
+     "所有怪物的前三回合都会使用第一回合意图（如果第一回合随机意图也会随机）"
+    ]
+  }
+}
