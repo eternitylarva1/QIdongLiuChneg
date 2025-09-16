@@ -10,13 +10,16 @@ import Qidongliucheng.utils.InstanceMaker;
 import Qidongliucheng.utils.Invoker;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
-import com.megacrit.cardcrawl.monsters.exordium.Cultist;
+import com.megacrit.cardcrawl.monsters.city.BronzeOrb;
+import com.megacrit.cardcrawl.monsters.exordium.Lagavulin;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+
+import static Qidongliucheng.modcore.MyModConfig.countmax;
+import static Qidongliucheng.modcore.MyModConfig.enableBronzeOrb;
 
 
 public class jibaobingdu extends CustomRelic {
@@ -35,15 +38,23 @@ public class jibaobingdu extends CustomRelic {
     public void atTurnStart() {
         super.atTurnStart();
         this.counter++;
-        if (this.counter>3){
+        if (this.counter>countmax){
             return;
         }
         for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
            if (monster.isDying||monster.isDeadOrEscaped()){
                continue;
            }
+           if (!enableBronzeOrb &&monster instanceof BronzeOrb){
+               continue;
+           }
            AbstractMonster am;
             am = InstanceMaker.getInstanceByClass(monster.getClass());
+            if (am instanceof Lagavulin)
+            {
+
+                am=new Lagavulin(true);
+            }
             am.init();
             am.applyPowers();
             am.createIntent();
@@ -59,6 +70,12 @@ public class jibaobingdu extends CustomRelic {
 
         }
 
+    }
+
+    @Override
+    public void onVictory() {
+        super.onVictory();
+        this.counter=0;
     }
 
     @Override

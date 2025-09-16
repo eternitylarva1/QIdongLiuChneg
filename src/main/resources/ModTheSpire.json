@@ -2,8 +2,8 @@
   "modid": "qidongliucheng",
   "name": "怪物慢启动 monster startagain",
   "author_list": ["Dieyou"],
-  "description": "作者@b站蝴蝶是幼虫，怪物前三回合都会尝试使用第一回合的意图",
-  "version": "0.1.4",
+  "description": "作者@b站蝴蝶是幼虫，怪物前三回合都会尝试使用第一回合的意图。",
+  "version": "0.1.7",
   "sts_version": "12-22-2020",
   "mts_version": "3.23.2",
   "dependencies": ["basemod","stslib"]

@@ -12,6 +12,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.Keyword;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
@@ -77,6 +78,7 @@ public class qidongliucheng implements StartActSubscriber,PostDungeonInitializeS
     }
     @Override
     public void receivePostInitialize() {
+        BaseMod.registerModBadge(ImageMaster.loadImage("qidongliuchengResources/images/relics/virus.png"),MyModID,"Dieyou", "怪物需要额外回合启动", new MyModConfig());
 
     }
 
